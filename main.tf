@@ -14,6 +14,11 @@ terraform {
     }
   }
 }
+provider "azurerm" {
+  version = ">= 2.4.1"
+  features {}
+  }
+
 data "azurerm_client_config" "current" {}
 # Create our Resource Group 
 resource "azurerm_resource_group" "rg" {

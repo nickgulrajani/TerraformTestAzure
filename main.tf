@@ -22,12 +22,12 @@ provider "azurerm" {
   }
 }
 data "azurerm_client_config" "current" {}
-# Create our Resource Group - Jonnychipz-RG
+# Create our Resource Group 
 resource "azurerm_resource_group" "rg" {
   name     = "nicholas-app01"
   location = "eastus"
 }
-# Create our Virtual Network - Jonnychipz-VNET
+# Create our Virtual Network 
 resource "azurerm_virtual_network" "vnet" {
   name                = "nicholasvnet"
   address_space       = ["10.0.0.0/16"]
@@ -41,7 +41,7 @@ resource "azurerm_subnet" "sn" {
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes       = ["10.0.1.0/24"]
 }
-# Create our Azure Storage Account - jonnychipzsa
+# Create our Azure Storage Account 
 resource "azurerm_storage_account" "nicholasgzsa" {
   name                     = "nicholasgzsa"
   resource_group_name      = azurerm_resource_group.rg.name
@@ -64,7 +64,7 @@ resource "azurerm_network_interface" "vmnic" {
     private_ip_address_allocation = "Dynamic"
   }
 }
-# Create our Virtual Machine - Jonnychipz-VM01
+# Create our Virtual Machine - VM01
 resource "azurerm_virtual_machine" "nicholasvm01" {
   name                  = "nicholasvm01"
   location              = azurerm_resource_group.rg.location

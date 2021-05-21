@@ -13,6 +13,9 @@ steps:
   displayName: 'Terraform : INIT'
   inputs:
     backendServiceArm: 'nick-TFSPN'
+    backendAzureRmStorageAccountName: 'nicdevterraformbackendsa'
+    backendAzureRmContainerName: 'nick-terraform-backend-files'
+    backendAzureRmKey: 'z+upNiAp4jOfS0YXzoeO2cnqc5mw+zK+7eP09H0C7rDsASU4+NzWRXP6sdoH7ZdfSIeoemHGTkrMuqhgsRUM1Q=='
 
 - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV1@0
   displayName: 'Terraform : PLAN'

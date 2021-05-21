@@ -6,7 +6,7 @@ pool:
   vmImage: 'vs2017-win2016'
 
 steps:
-- task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller
+- task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
   displayName: 'Use Terraform latest'
   inputs:
     terraformVersion: 0.14.3

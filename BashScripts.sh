@@ -1,17 +1,17 @@
 #!/bin/bash
 #COnnect and set Subscription Context in Azure
 az login
-az account set --subscription "MPN - John Lunn"
+az account set --subscription "IGNW-Trinity"
 
 
 #Set Variables for Storage account and Key Vault that support the Terraform implementation
-RESOURCE_GROUP_NAME=jonnychipz-infra
-STORAGE_ACCOUNT_NAME=jonnychipztstate
-CONTAINER_NAME=tstate
+RESOURCE_GROUP_NAME=nicholasg-infra
+STORAGE_ACCOUNT_NAME=nicholasgstg
+CONTAINER_NAME=nicholasgcontainer
 STATE_FILE="terraform.state"
 
 # Create resource group
-az group create --name $RESOURCE_GROUP_NAME --location uksouth
+az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 # Create storage account
 az storage account create --resource-group $RESOURCE_GROUP_NAME --name $STORAGE_ACCOUNT_NAME --sku Standard_LRS --encryption-services blob
@@ -29,6 +29,6 @@ echo "access_key: $ACCOUNT_KEY"
 echo "state_file: $STATE_FILE"
 
 # Create KeyVault and example of storing a key
-az keyvault create --name "jonnychipzkv" --resource-group "jonnychipz-infra" --location uksouth
-az keyvault secret set --vault-name "jonnychipzkv" --name "tstateaccess" --value {$ACCOUNT_KEY}
-az keyvault secret show --vault-name "jonnychipzkv" --name "tstateaccess"
+az keyvault create --name "nicholasgkv" --resource-group "nicholasg-infra" --location eastus
+az keyvault secret set --vault-name "nicholasgkv" --name "nicholasgstateaccess" --value {$ACCOUNT_KEY}
+az keyvault secret show --vault-name "nicholasgkv" --name "nicholasgstateaccess"

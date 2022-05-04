@@ -1,15 +1,15 @@
 terraform {
   backend "azurerm" {
-    resource_group_name   = "nick-dev-terraform-backend-rg"
-    storage_account_name  = "nicdevterraformbackendsa"
-    container_name        = "nick-terraform-backend-files"
-    key                   =  "z+upNiAp4jOfS0YXzoeO2cnqc5mw+zK+7eP09H0C7rDsASU4+NzWRXP6sdoH7ZdfSIeoemHGTkrMuqhgsRUM1Q=="
-}
+    resource_group_name  = "nick-dev-terraform-backend-rg"
+    storage_account_name = "nicdevterraformbackendsa"
+    container_name       = "nick-terraform-backend-files"
+    key                  = "z+upNiAp4jOfS0YXzoeO2cnqc5mw+zK+7eP09H0C7rDsASU4+NzWRXP6sdoH7ZdfSIeoemHGTkrMuqhgsRUM1Q=="
+  }
 
   required_providers {
     azurerm = {
       # Specify what version of the provider we are going to utilise
-      source = "hashicorp/azurerm"
+      source  = "hashicorp/azurerm"
       version = ">= 2.7.0"
     }
   }
@@ -17,8 +17,8 @@ terraform {
 provider "azurerm" {
   version = ">= 2.7.0"
   features {}
-  skip_provider_registration =  true
-  }
+  skip_provider_registration = true
+}
 
 data "azurerm_client_config" "current" {}
 # Create our Resource Group 
@@ -38,7 +38,7 @@ resource "azurerm_subnet" "sn" {
   name                 = "VM"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes       = ["10.0.1.0/24"]
+  address_prefixes     = ["10.0.1.0/24"]
 }
 # Create our Azure Storage Account 
 resource "azurerm_storage_account" "nicholasgzsa" {
@@ -56,7 +56,7 @@ resource "azurerm_network_interface" "vmnic" {
   name                = "nicholasvm01nic"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
- 
+
   ip_configuration {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.sn.id
@@ -83,9 +83,9 @@ resource "azurerm_virtual_machine" "nicholasvm01" {
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name      = "nicholasvm01"
-    admin_username     = "nicholasadmin"
-    admin_password     = "Password123$"
+    computer_name  = "nicholasvm01"
+    admin_username = "nicholasadmin"
+    admin_password = "Password123$"
   }
   os_profile_windows_config {
   }

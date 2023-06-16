@@ -14,7 +14,7 @@ steps:
 - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV1@0
   displayName: 'Terraform : INIT'
   inputs:
-    backendServiceArm: 'nick-TFSPN'
+    backendServiceArm: 'NICK_NEW_SVC_CONNECTION'
     backendAzureRmResourceGroupName: 'nick-dev-terraform-backend-rg'
     backendAzureRmStorageAccountName: nicdevterraformbackendsa
     backendAzureRmContainerName: nick-terraform-backend-files
@@ -24,10 +24,10 @@ steps:
   displayName: 'Terraform : PLAN'
   inputs:
     command: plan
-    environmentServiceNameAzureRM: 'nick-TFSPN'
+    environmentServiceNameAzureRM: 'NICK_NEW_SVC_CONNECTION'
 
 - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV1@0
   displayName: 'Terraform : APPLY'
   inputs:
     command: apply
-    environmentServiceNameAzureRM: 'nick-TFSPN'
+    environmentServiceNameAzureRM: 'NICK_NEW_SVC_CONNECTION'

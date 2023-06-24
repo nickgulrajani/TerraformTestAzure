@@ -3,7 +3,9 @@
 ADD A NEW STORY ISSUE 1430 
 
 Test deployment of Azure infrastructiure using Terraform and ADO
+
 ADD A NEW FEATURE User Story:
+
 As a DevOps engineer,
 I want to create an Azure DevOps pipeline for Terraform,
 So that I can automate the infrastructure provisioning and management processes.
